@@ -103,6 +103,7 @@ public class MD5
         }
         
         messageMD5 = messageHexa.toString();
+        messageMD5 = messageMD5.toLowerCase();
     }
 
     public String getMessageInitial()

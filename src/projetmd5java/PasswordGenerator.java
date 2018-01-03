@@ -52,4 +52,24 @@ public class PasswordGenerator
         
         return resultat;
     }
+    
+    // Par exemple, on va générer une clé secrète aléatoire de 25 à 50 caractères
+    public String generationCleSecrete()
+    {
+        String resultat = "";
+        
+        Random longueurAleatoire = new Random();
+        int min = 25;
+        int max = 50;
+        
+        int longueur = random.nextInt(max + 1 - min) + min;
+        
+        for (int i = 0; i < longueur; i++) 
+        {
+            int index = random.nextInt(dictionnaire3.length());
+            resultat += dictionnaire3.charAt(index);
+        }
+        
+        return resultat;
+    }
 }
