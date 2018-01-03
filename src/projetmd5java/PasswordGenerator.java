@@ -26,11 +26,12 @@ public class PasswordGenerator
     private static final String dictionnaire2 = majuscules + minuscules + chiffres;
     private static final String dictionnaire3 = majuscules + minuscules + chiffres + special;
     
-    public String generationMotDePasseV1(int longueur) 
+    public String generationSalt() 
     {
         String resultat = "";
         
-        for (int i = 0; i < longueur; i++) 
+        // Salt de 16 caractères
+        for (int i = 0; i < 16; i++) 
         {
             int index = random.nextInt(dictionnaire1.length());
             resultat += dictionnaire1.charAt(index);
@@ -39,20 +40,7 @@ public class PasswordGenerator
         return resultat;
     }
     
-    public String generationMotDePasseV2(int longueur) 
-    {
-        String resultat = "";
-        
-        for (int i = 0; i < longueur; i++) 
-        {
-            int index = random.nextInt(dictionnaire2.length());
-            resultat += dictionnaire2.charAt(index);
-        }
-        
-        return resultat;
-    }
-    
-    public String generationMotDePasseV3(int longueur) 
+    public String generationMotDePasse(int longueur) 
     {
         String resultat = "";
         
