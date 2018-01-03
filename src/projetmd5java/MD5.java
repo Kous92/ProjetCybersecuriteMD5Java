@@ -47,6 +47,17 @@ public class MD5
     private int[] buffer;
     
     // Constructeur: Initialisation du message 
+    public MD5(byte[] message)
+    {
+        this.message = message;
+        messageInitial = new String(message);
+        
+        longueurMessageOctets = message.length;
+        nombreBlocs = ((longueurMessageOctets + 8) >>> 6) + 1;
+        longueurTotale = nombreBlocs << 6;
+    }
+    
+    // Constructeur: Initialisation du message 
     public MD5(String messageInitial)
     {
         this.messageInitial = messageInitial;
@@ -112,6 +123,11 @@ public class MD5
     public long getLongueurMessageBits() 
     {
         return longueurMessageBits;
+    }
+
+    public byte[] getMd5() 
+    {
+        return md5;
     }
     
     public void hachageMD5()

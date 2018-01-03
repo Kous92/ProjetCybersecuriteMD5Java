@@ -45,13 +45,24 @@ public class MD5Project
         for (int i = 0; i < 100; i++)
         {
             longueurMotDePasse = random.nextInt(max + 1 - min) + min;
-            id[i] = pg.generationMotDePasseV3(longueurMotDePasse);
+            id[i] = pg.generationMotDePasse(longueurMotDePasse);
             
             MD5 hash = new MD5(id[i]);
             hash.hachageMD5();
             idMD5[i] = hash.getMessageMD5();
             
             System.out.println("> Mot de passe " + (i + 1) + ": " + id[i] + " -> " + idMD5[i]);
-        }    
+        }
+        
+        // H-MAC MD5
+        System.out.println("\n\n>>> H-MAC MD5");
+        
+        String key1 = "&kpHBTonCFpcAv4FAMx6ohOc4Q=Leoxbaarc-ae8L5ETrQqRkB3*PL6RLWW3joaN8B3ATJEgz=-jMgdwQAGwS6f-3%e6*dkF+gbpX2H4aNARx";
+        String challenge1 = "%pyH+gkCKEzJ7?N@PAgyS4ruV2%SzxoY=&O%ei9oAYijWKNxmX4xRkzkRNGd9NRNfmHm3FaK6CpRAAok%4R-Wi$@";
+        
+        HMACMD5 hmac = new HMACMD5(key1);
+        
+        hmac.hachageHMACMD5Base64(challenge1);
+        System.out.println("Token: " + hmac.getToken());
     }
 }
